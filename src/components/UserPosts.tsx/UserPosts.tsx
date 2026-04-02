@@ -27,7 +27,6 @@ const UserPosts = ({ userId, page }: Props) => {
           <li key={post.id}>
             <h3>{post.title}</h3>
             <p>{post.body}</p>
-            {/* <UserPosts userId={user.id} /> */}
           </li>
         ))}
       </ul>

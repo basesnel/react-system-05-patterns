@@ -1,11 +1,12 @@
 import { useFetch } from "../../utils/useFetch";
+import { UserPosts } from "../UserPosts.tsx/UserPosts";
 
 type User = {
   id: number;
   name: string;
 };
 
-function Users() {
+const Users = () => {
   const { data, loading, error } = useFetch<User[]>(
     "https:/jsonplaceholder.typicode.com/users",
   );
@@ -20,12 +21,12 @@ function Users() {
         {data?.map((user) => (
           <li key={user.id}>
             {user.name}
-            {/* <UserPosts userId={user.id} /> */}
+            <UserPosts userId={user.id} />
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 export { Users };

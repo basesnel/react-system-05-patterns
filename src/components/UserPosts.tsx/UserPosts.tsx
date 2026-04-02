@@ -2,6 +2,7 @@ import { useFetch } from "../../utils/useFetch";
 
 interface Props {
   userId: number;
+  page: number;
 }
 
 type Post = {
@@ -10,9 +11,9 @@ type Post = {
   body: string;
 };
 
-const UserPosts = ({ userId }: Props) => {
+const UserPosts = ({ userId, page }: Props) => {
   const { data, loading, error } = useFetch<Post[]>(
-    `https:/jsonplaceholder.typicode.com/posts?userId=${userId}`,
+    `https:/jsonplaceholder.typicode.com/posts?userId=${userId}&page=${page}`,
   );
 
   if (loading) return <div>Posts fetching...</div>;

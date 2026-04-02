@@ -1,5 +1,6 @@
 import { useFetch } from "../../utils/useFetch";
-import { UserPosts } from "../UserPosts.tsx/UserPosts";
+import { PaginatedUserPosts } from "../PaginatedUserPosts/PaginatedUserPosts";
+// import { UserPosts } from "../UserPosts.tsx/UserPosts";
 
 type User = {
   id: number;
@@ -21,7 +22,7 @@ const Users = () => {
         {data?.map((user) => (
           <li key={user.id}>
             {user.name}
-            <UserPosts userId={user.id} />
+            <PaginatedUserPosts userId={user.id} page={1} />
           </li>
         ))}
       </ul>

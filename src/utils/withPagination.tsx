@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { ComponentType } from "react";
 
-function withPagination<P>(WrappedComponent: ComponentType<P>) {
+const withPagination = <P,>(WrappedComponent: ComponentType<P>) => {
   return (props: P) => {
     const [page, setPage] = useState(1);
 
@@ -18,6 +18,6 @@ function withPagination<P>(WrappedComponent: ComponentType<P>) {
       </div>
     );
   };
-}
+};
 
 export { withPagination };

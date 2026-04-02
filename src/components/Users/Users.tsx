@@ -1,6 +1,5 @@
 import { useFetch } from "../../utils/useFetch";
 import { PaginatedUserPosts } from "../PaginatedUserPosts/PaginatedUserPosts";
-// import { UserPosts } from "../UserPosts.tsx/UserPosts";
 
 type User = {
   id: number;

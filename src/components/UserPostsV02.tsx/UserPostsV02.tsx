@@ -11,7 +11,7 @@ type Post = {
   body: string;
 };
 
-const UserPosts = ({ userId, page }: Props) => {
+const UserPostsV02 = ({ userId, page }: Props) => {
   const { data, loading, error } = useFetch<Post[]>(
     `https:/jsonplaceholder.typicode.com/posts?userId=${userId}&page=${page}`,
   );
@@ -34,4 +34,4 @@ const UserPosts = ({ userId, page }: Props) => {
   );
 };
 
-export { UserPosts };
+export { UserPostsV02 };

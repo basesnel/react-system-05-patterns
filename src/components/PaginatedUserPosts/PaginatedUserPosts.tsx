@@ -1,6 +1,6 @@
 import { withPagination } from "../../utils/withPagination";
-import { UserPosts } from "../UserPosts.tsx/UserPosts";
+import { UserPostsV02 } from "../UserPostsV02.tsx/UserPostsV02";
 
-const PaginatedUserPosts = withPagination(UserPosts);
+const PaginatedUserPosts = withPagination(UserPostsV02);
 
 export { PaginatedUserPosts };

@@ -6,7 +6,7 @@ type User = {
   name: string;
 };
 
-const Users = () => {
+const UsersV02 = () => {
   const { data, loading, error } = useFetch<User[]>(
     "https:/jsonplaceholder.typicode.com/users",
   );
@@ -29,4 +29,4 @@ const Users = () => {
   );
 };
 
-export { Users };
+export { UsersV02 };

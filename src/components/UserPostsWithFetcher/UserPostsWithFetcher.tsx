@@ -10,7 +10,7 @@ type Post = {
   body: string;
 };
 
-function UserPostsWithFetcher({ userId }: Props) {
+const UserPostsWithFetcher = ({ userId }: Props) => {
   return (
     <DataFetcher<Post[]>
       url={`https:/jsonplaceholder.typicode.com/posts?userId=${userId}`}
@@ -31,6 +31,6 @@ function UserPostsWithFetcher({ userId }: Props) {
       }}
     />
   );
-}
+};
 
 export { UserPostsWithFetcher };

@@ -1,0 +1,26 @@
+import { useFetch } from "../../utils/useFetch";
+import { UsersTable } from "../UsersTable/UsersTable";
+
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+const UsersV04 = () => {
+  const { data, loading, error } = useFetch<User[]>(
+    "https:/jsonplaceholder.typicode.com/users",
+  );
+
+  if (loading) return <div>Users fetching...</div>;
+  if (error) return <div>{error}</div>;
+
+  return (
+    <div>
+      <h1>Users</h1>
+      {data && <UsersTable users={data} />}
+    </div>
+  );
+};
+
+export { UsersV04 };

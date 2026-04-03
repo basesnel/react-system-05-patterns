@@ -3,6 +3,7 @@
 // import { UsersV03 } from "./components/UsersV03/UsersV03";
 // import { UsersWithPosts } from "./components/UsersWithPosts/UsersWithPosts";
 
+import { CommentForm } from "./components/CommentForm/CommentForm";
 import { LoginForm } from "./components/LoginForm/LoginForm";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       {/* <UsersV03 /> */}
       {/* <UsersWithPosts /> */}
       <LoginForm />
+      <CommentForm />
     </>
   );
 }

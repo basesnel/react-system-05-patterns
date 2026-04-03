@@ -1,5 +1,5 @@
 import { DataFetcher } from "../DataFetcher/DataFetcher";
-import { PaginatedUserPosts } from "../PaginatedUserPosts/PaginatedUserPosts";
+import { UserPostsWithFetcher } from "../UserPostsWithFetcher/UserPostsWithFetcher";
 
 type User = {
   id: number;
@@ -18,7 +18,7 @@ const UsersWithPosts = () => {
               {data?.map((user) => (
                 <li key={user.id}>
                   {user.name}
-                  <PaginatedUserPosts userId={user.id} page={1} />
+                  <UserPostsWithFetcher userId={user.id} />
                 </li>
               ))}
             </ul>

@@ -8,6 +8,7 @@ import { CommentForm } from "./components/CommentForm/CommentForm";
 import { HoverBox } from "./components/HoverBox/HoverBox";
 import { LoginForm } from "./components/LoginForm/LoginForm";
 import { UsersV04 } from "./components/UsersV04/UsersV04";
+import { UsersV05 } from "./components/UsersV05/UsersV05";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           </button>
         )}
       />
+      <UsersV05 />
     </>
   );
 }

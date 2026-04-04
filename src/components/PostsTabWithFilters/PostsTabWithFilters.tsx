@@ -1,3 +1,4 @@
+import { postFilterStrategy, postSortStrategy } from "../../utils/ strategies";
 import { TableWithFilters } from "../TabWithFilters/TabWithFilters";
 
 type Post = {
@@ -21,8 +22,8 @@ function PostsTableWithFilters({ posts }: Props) {
           <td>{post.text}</td>
         </tr>
       )}
-      sortStrategy={userSortStrategy}
-      filterStrategy={userFilterStrategy}
+      sortStrategy={postSortStrategy}
+      filterStrategy={postFilterStrategy}
     />
   );
 }

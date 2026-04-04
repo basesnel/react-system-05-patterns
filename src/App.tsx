@@ -5,6 +5,7 @@
 
 import { Box } from "./components/Box/Box";
 import { CommentForm } from "./components/CommentForm/CommentForm";
+import { HoverBox } from "./components/HoverBox/HoverBox";
 import { LoginForm } from "./components/LoginForm/LoginForm";
 import { UsersV04 } from "./components/UsersV04/UsersV04";
 
@@ -26,6 +27,18 @@ function App() {
       <Box as="a" href="https://react.dev">
         Link
       </Box>
+      <HoverBox
+        render={(hovered) => (hovered ? "Got hovered me!" : "Hover me!")}
+      />
+      <HoverBox
+        render={(hovered) => (
+          <button
+            style={{ background: hovered ? "blue" : "gray", color: "white" }}
+          >
+            {hovered ? "Got hovered!" : "Click me!"}
+          </button>
+        )}
+      />
     </>
   );
 }

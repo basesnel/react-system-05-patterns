@@ -9,10 +9,10 @@ import { HoverBox } from "./components/HoverBox/HoverBox";
 import { LoginForm } from "./components/LoginForm/LoginForm";
 import { UsersV04 } from "./components/UsersV04/UsersV04";
 import { UsersV05 } from "./components/UsersV05/UsersV05";
-// import { useFetchUserId } from "./utils/fetchData";
+import { useFetchUserId } from "./utils/fetchData";
 
 function App() {
-  // useFetchUserId();
+  useFetchUserId();
 
   return (
     <>

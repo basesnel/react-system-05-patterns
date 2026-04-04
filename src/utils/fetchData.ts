@@ -48,7 +48,12 @@ const fetchPost = async (postId: number) => {
 
 const useFetchUserId = (): void => {
   useEffect(() => {
-    console.log(fetchUser(0));
+    const getResult = async () => {
+      const result = await fetchUser(1);
+      console.log(result);
+    };
+
+    getResult();
   }, []);
 };
 

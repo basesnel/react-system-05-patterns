@@ -3,6 +3,7 @@
 // import { UsersV03 } from "./components/UsersV03/UsersV03";
 // import { UsersWithPosts } from "./components/UsersWithPosts/UsersWithPosts";
 
+import { Box } from "./components/Box/Box";
 import { CommentForm } from "./components/CommentForm/CommentForm";
 import { LoginForm } from "./components/LoginForm/LoginForm";
 import { UsersV04 } from "./components/UsersV04/UsersV04";
@@ -18,6 +19,13 @@ function App() {
       <LoginForm />
       <CommentForm />
       <UsersV04 />
+      <Box as="section">It's a section</Box>
+      <Box as="button" onClick={() => alert("Clicked!")}>
+        Button
+      </Box>
+      <Box as="a" href="https://react.dev">
+        Link
+      </Box>
     </>
   );
 }

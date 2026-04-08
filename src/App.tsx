@@ -1,3 +1,4 @@
+import { Posts } from "./components/02_SOLID/Posts/Posts";
 import { Users } from "./components/02_SOLID/Users/Users";
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
     <>
       <h1>App</h1>
       <Users />
+      <Posts />
     </>
   );
 }

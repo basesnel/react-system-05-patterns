@@ -1,8 +1,11 @@
 import { useFetch } from "../../../utils/useFetch";
+import { Filter } from "../Filter/Filter";
 
 type User = {
   id: number;
   name: string;
+  phone: string;
+  webSite: string;
 };
 
 const Users = () => {
@@ -16,6 +19,7 @@ const Users = () => {
   return (
     <div>
       <h2>Users</h2>
+      {data && <Filter users={data} />}
       <ul>
         {data?.map((user) => (
           <li key={user.id}>{user.name}</li>

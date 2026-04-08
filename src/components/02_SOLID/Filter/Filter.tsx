@@ -18,6 +18,7 @@ const Filter = ({ users }: Props) => {
     if (filter === "all") return true;
     if (filter === "hasPhone") return user.phone;
     if (filter === "hasWebsite") return user.webSite;
+    return true;
   });
 
   return (

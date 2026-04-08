@@ -1,12 +1,12 @@
-import { useFetch } from "../../utils/useFetch";
-import { PaginatedUserPosts } from "../PaginatedUserPosts/PaginatedUserPosts";
+import { useFetch } from "../../../utils/useFetch";
+import { UserPostsV01 } from "../UserPostsV01/UserPostsV01";
 
 type User = {
   id: number;
   name: string;
 };
 
-const UsersV02 = () => {
+const UsersV01 = () => {
   const { data, loading, error } = useFetch<User[]>(
     "https:/jsonplaceholder.typicode.com/users",
   );
@@ -21,7 +21,7 @@ const UsersV02 = () => {
         {data?.map((user) => (
           <li key={user.id}>
             {user.name}
-            <PaginatedUserPosts userId={user.id} page={1} />
+            <UserPostsV01 userId={user.id} />
           </li>
         ))}
       </ul>
@@ -29,4 +29,4 @@ const UsersV02 = () => {
   );
 };
 
-export { UsersV02 };
+export { UsersV01 };

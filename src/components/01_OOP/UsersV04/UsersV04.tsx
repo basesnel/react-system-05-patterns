@@ -1,4 +1,4 @@
-import { useFetch } from "../../utils/useFetch";
+import { useFetch } from "../../../utils/useFetch";
 import { UsersTable } from "../UsersTable/UsersTable";
 
 type User = {

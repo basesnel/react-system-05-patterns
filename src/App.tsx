@@ -1,14 +1,9 @@
-// import { UsersV02 } from "./components/UsersV02/UsersV02";
-// import { UsersV01 } from "./components/UsersV01/UsersV01";
-// import { UsersV03 } from "./components/UsersV03/UsersV03";
-// import { UsersWithPosts } from "./components/UsersWithPosts/UsersWithPosts";
-
-import { Box } from "./components/Box/Box";
-import { CommentForm } from "./components/CommentForm/CommentForm";
-import { HoverBox } from "./components/HoverBox/HoverBox";
-import { LoginForm } from "./components/LoginForm/LoginForm";
-import { UsersV04 } from "./components/UsersV04/UsersV04";
-import { UsersV05 } from "./components/UsersV05/UsersV05";
+import { Box } from "./components/01_OOP/Box/Box";
+import { CommentForm } from "./components/01_OOP/CommentForm/CommentForm";
+import { HoverBox } from "./components/01_OOP/HoverBox/HoverBox";
+import { LoginForm } from "./components/01_OOP/LoginForm/LoginForm";
+import { UsersV04 } from "./components/01_OOP/UsersV04/UsersV04";
+import { UsersV05 } from "./components/01_OOP/UsersV05/UsersV05";
 import { useFetchUserId } from "./utils/fetchData";
 
 function App() {
@@ -17,10 +12,6 @@ function App() {
   return (
     <>
       <h1>App</h1>
-      {/* <UsersV01 /> */}
-      {/* <UsersV02 /> */}
-      {/* <UsersV03 /> */}
-      {/* <UsersWithPosts /> */}
       <LoginForm />
       <CommentForm />
       <UsersV04 />

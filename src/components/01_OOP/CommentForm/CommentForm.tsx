@@ -1,4 +1,4 @@
-import { useCommentForm } from "../../utils/useCommentForm";
+import { useCommentForm } from "../../../utils/useCommentForm";
 
 const CommentForm = () => {
   const { values, errors, handleChange, handleSubmit } = useCommentForm();

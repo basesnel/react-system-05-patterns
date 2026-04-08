@@ -1,4 +1,4 @@
-import { useFetch } from "../../utils/useFetch";
+import { useFetch } from "../../../utils/useFetch";
 import { PostCard } from "../PostCard/PostCard";
 
 interface Props {

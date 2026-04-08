@@ -1,12 +1,13 @@
-import { useFetch } from "../../utils/useFetch";
-import { UserPostsV01 } from "../UserPostsV01/UserPostsV01";
+import { useFetch } from "../../../utils/useFetch";
+import { UserCard } from "../UserCard/UserCard";
+import { UserPostsV03 } from "../UserPostsV03/UserPostsV03";
 
 type User = {
   id: number;
   name: string;
 };
 
-const UsersV01 = () => {
+const UsersV03 = () => {
   const { data, loading, error } = useFetch<User[]>(
     "https:/jsonplaceholder.typicode.com/users",
   );
@@ -20,8 +21,10 @@ const UsersV01 = () => {
       <ul>
         {data?.map((user) => (
           <li key={user.id}>
-            {user.name}
-            <UserPostsV01 userId={user.id} />
+            <UserCard
+              user={user}
+              postsSlot={<UserPostsV03 userId={user.id} />}
+            />
           </li>
         ))}
       </ul>
@@ -29,4 +32,4 @@ const UsersV01 = () => {
   );
 };
 
-export { UsersV01 };
+export { UsersV03 };

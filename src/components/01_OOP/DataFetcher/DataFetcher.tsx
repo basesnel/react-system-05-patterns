@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { useFetch } from "../../utils/useFetch";
+import { useFetch } from "../../../utils/useFetch";
 
 interface Props<T> {
   url: string;

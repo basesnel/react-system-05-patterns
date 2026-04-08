@@ -1,4 +1,7 @@
-import { postFilterStrategy, postSortStrategy } from "../../utils/ strategies";
+import {
+  postFilterStrategy,
+  postSortStrategy,
+} from "../../../utils/strategies";
 import { TableWithFilters } from "../TabWithFilters/TabWithFilters";
 
 type Post = {

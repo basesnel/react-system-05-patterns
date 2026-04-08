@@ -1,4 +1,7 @@
-import { userFilterStrategy, userSortStrategy } from "../../utils/ strategies";
+import {
+  userFilterStrategy,
+  userSortStrategy,
+} from "../../../utils/strategies";
 import { TableWithFilters } from "../TabWithFilters/TabWithFilters";
 
 type User = {

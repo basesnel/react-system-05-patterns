@@ -1,4 +1,5 @@
-import { useFetch } from "../../../utils/useFetch";
+import { useEffect, useState } from "react";
+import { fetchPosts } from "../../../utils/api";
 
 type Post = {
   id: number;
@@ -7,18 +8,26 @@ type Post = {
 
 // Single Responsibility Principle (correct)
 const Posts = () => {
-  const { data, loading, error } = useFetch<Post[]>(
-    "https:/jsonplaceholder.typicode.com/posts",
-  );
+  const [posts, setPosts] = useState<Post[]>([]);
 
-  if (loading) return <div>Users fetching...</div>;
-  if (error) return <div>{error}</div>;
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const postsData = await fetchPosts();
+        setPosts(postsData);
+      } catch (error) {
+        console.log("Error loading data:", error);
+      }
+    };
+
+    loadPosts();
+  }, []);
 
   return (
     <div>
       <h2>Posts</h2>
       <ul>
-        {data?.map((post) => (
+        {posts?.map((post) => (
           <li key={post.id}>{post.title}</li>
         ))}
       </ul>

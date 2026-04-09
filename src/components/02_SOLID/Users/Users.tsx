@@ -1,4 +1,5 @@
-import { useFetch } from "../../../utils/useFetch";
+import { fetchUsers } from "../../../utils/api";
+import { useEffect, useState } from "react";
 import { Filter } from "../Filter/Filter";
 
 type User = {
@@ -10,19 +11,27 @@ type User = {
 
 // Single Responsibility Principle (correct)
 const Users = () => {
-  const { data, loading, error } = useFetch<User[]>(
-    "https:/jsonplaceholder.typicode.com/users",
-  );
+  const [users, setUsers] = useState<User[]>([]);
 
-  if (loading) return <div>Users fetching...</div>;
-  if (error) return <div>{error}</div>;
+  useEffect(() => {
+    const loadUsers = async () => {
+      try {
+        const usersData = await fetchUsers();
+        setUsers(usersData);
+      } catch (error) {
+        console.log("Error loading data:", error);
+      }
+    };
+
+    loadUsers();
+  }, []);
 
   return (
     <div>
       <h2>Users</h2>
-      {data && <Filter users={data} />}
+      {users && <Filter users={users} />}
       <ul>
-        {data?.map((user) => (
+        {users?.map((user) => (
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>

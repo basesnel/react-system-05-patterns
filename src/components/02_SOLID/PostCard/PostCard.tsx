@@ -1,4 +1,4 @@
-import { Card } from "../Card/Card";
+import { CommonCard } from "../CommonCard/CommonCard";
 
 type Post = {
   id: number;
@@ -6,11 +6,14 @@ type Post = {
   body: string;
 };
 
-interface Props {
-  data: Post;
+interface PostCardProps {
+  post: Post;
 }
 
 // LSP - Liskov Substitution Principle
-const PostCard = (props: Props) => <Card {...props} />;
+// const PostCard = (props: Props) => <Card {...props} />;
+const PostCard: React.FC<PostCardProps> = ({ post }) => (
+  <CommonCard renderHeader={() => post.title} renderBody={() => post.body} />
+);
 
 export { PostCard };

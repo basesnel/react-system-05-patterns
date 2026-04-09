@@ -8,7 +8,7 @@ interface FilterProps<T> {
   renderItem: (item: T) => ReactNode;
 }
 
-// Open/Closed Principle
+// Open/Closed Principle (correct)
 const CommonFilter = <T,>({ data, filters, renderItem }: FilterProps<T>) => {
   const [activeFilter, setActiveFilter] = useState<string>("all");
 

@@ -5,7 +5,7 @@ type Post = {
   title: string;
 };
 
-// Single Responsibility Principle
+// Single Responsibility Principle (correct)
 const Posts = () => {
   const { data, loading, error } = useFetch<Post[]>(
     "https:/jsonplaceholder.typicode.com/posts",

@@ -11,6 +11,7 @@ type Post = {
   title: string;
 };
 
+// Single Responsibility Principle (wrong)
 const UsersAndPosts = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);

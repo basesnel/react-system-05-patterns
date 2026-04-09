@@ -10,7 +10,7 @@ interface Props {
   posts: Post[];
 }
 
-// Single Responsibility Principle (correct)
+// Open/Closed Principle (correct)
 const PostsFilter = ({ posts }: Props) => {
   const postFilters = {
     all: () => true,

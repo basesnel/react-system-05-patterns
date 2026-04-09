@@ -64,7 +64,7 @@ const FilterWithPosts = ({ users, posts, dataType }: Props) => {
           dataType === "users" ? (
             <li key={item.id}>{(item as User).name}</li>
           ) : (
-            <li key={item.id}>{(item as Post).title}</li>
+            <li key={item.id}>{(item as unknown as Post).title}</li>
           ),
         )}
       </ul>

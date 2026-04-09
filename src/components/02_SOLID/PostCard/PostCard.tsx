@@ -10,7 +10,7 @@ interface PostCardProps {
   post: Post;
 }
 
-// LSP - Liskov Substitution Principle
+// LSP - Liskov Substitution Principle (correct)
 // const PostCard = (props: Props) => <Card {...props} />;
 const PostCard: React.FC<PostCardProps> = ({ post }) => (
   <CommonCard renderHeader={() => post.title} renderBody={() => post.body} />

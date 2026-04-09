@@ -1,6 +1,7 @@
 import { fetchUsers } from "../../../utils/api";
 import { useEffect, useState } from "react";
-import { UsersFilter } from "../UsersFilter/UsersFilter";
+import { UserCard } from "../UserCard/UserCard";
+// import { UsersFilter } from "../UsersFilter/UsersFilter";
 
 type User = {
   id: number;
@@ -29,7 +30,8 @@ const Users = () => {
   return (
     <div>
       <h2>Users</h2>
-      <UsersFilter users={users} />
+      {/* <UsersFilter users={users} /> */}
+      {users[0] && <UserCard user={users[0]} />}
       <ul>
         {users?.map((user) => (
           <li key={user.id}>{user.name}</li>

@@ -9,7 +9,7 @@ interface Props {
   data: User;
 }
 
-// LSP - Liskov Substitution Principle
+// LSP - Liskov Substitution Principle (wrong)
 const Card = ({ data }: Props) => {
   <div className="card">
     <h3>{data.name}</h3>

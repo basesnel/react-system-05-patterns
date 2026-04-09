@@ -11,7 +11,7 @@ interface UserCardProps {
   user: User;
 }
 
-// LSP - Liskov Substitution Principle
+// LSP - Liskov Substitution Principle (correct)
 // const PostCard = (props: Props) => <Card {...props} />;
 const UserCard: React.FC<UserCardProps> = ({ user }) => (
   <CommonCard renderHeader={() => user.name} renderBody={() => user.phone} />

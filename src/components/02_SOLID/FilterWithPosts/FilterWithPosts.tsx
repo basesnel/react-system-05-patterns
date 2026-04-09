@@ -19,6 +19,7 @@ interface Props {
   dataType: "users" | "posts";
 }
 
+// Open/Closed Principle
 const FilterWithPosts = ({ users, posts, dataType }: Props) => {
   const [filter, setFilter] = useState("all");
 

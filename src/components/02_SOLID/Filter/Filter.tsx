@@ -11,6 +11,7 @@ interface Props {
   users: User[];
 }
 
+// Open/Closed Principle
 const Filter = ({ users }: Props) => {
   const [filter, setFilter] = useState("all");
 

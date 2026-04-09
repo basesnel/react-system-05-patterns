@@ -8,6 +8,7 @@ type User = {
   webSite: string;
 };
 
+// Single Responsibility Principle
 const Users = () => {
   const { data, loading, error } = useFetch<User[]>(
     "https:/jsonplaceholder.typicode.com/users",

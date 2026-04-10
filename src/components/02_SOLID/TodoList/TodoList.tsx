@@ -6,6 +6,7 @@ type Todo = {
   completed: boolean;
 };
 
+// Dependancy Inversion Principle (DIP)
 const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -38,7 +39,16 @@ const TodoList = () => {
   return (
     <div>
       <button onClick={() => createTodo("New Task")}>AddTodo</button>
-      <ul></ul>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.title}
+            {":"}
+            {todo.completed ? "Completed" : "Uncompleted"}
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

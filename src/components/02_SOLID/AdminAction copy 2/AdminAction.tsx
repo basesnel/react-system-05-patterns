@@ -1,18 +1,4 @@
-type User = {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  webSite: string;
-};
-
-interface Props {
-  user: User;
-  role: "admin" | "subscriber" | "guest";
-}
-
-// Interface Segregation Principle (ISP)
-const UserPanel = ({ user, role }: Props) => {
+const AdminAction = () => {
   const handleEditClick = () => {
     if (role === "admin") {
       console.log("Editing user");
@@ -54,4 +40,4 @@ const UserPanel = ({ user, role }: Props) => {
   );
 };
 
-export { UserPanel };
+export { AdminAction };

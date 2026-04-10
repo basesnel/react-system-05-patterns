@@ -6,8 +6,8 @@ type Todo = {
   completed: boolean;
 };
 
-// Dependancy Inversion Principle (DIP)
-const TodoList = () => {
+// DIP - Dependancy Inversion Principle (wrong)
+const TodoListV01 = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
@@ -53,4 +53,4 @@ const TodoList = () => {
   );
 };
 
-export { TodoList };
+export { TodoListV01 };

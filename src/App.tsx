@@ -1,13 +1,12 @@
 // import { Posts } from "./components/02_SOLID/Posts/Posts";
 // import { Users } from "./components/02_SOLID/Users/Users";
-
-import { TodoList } from "./components/02_SOLID/TodoList/TodoList";
+import { TodoListV01 } from "./components/02_SOLID/TodoListV01/TodoListV01";
 
 function App() {
   return (
     <>
       <h1>App</h1>
-      <TodoList />
+      <TodoListV01 />
       {/* <Users />
       <Posts /> */}
     </>

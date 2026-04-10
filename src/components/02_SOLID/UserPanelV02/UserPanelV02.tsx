@@ -2,6 +2,8 @@ import { AdminActions } from "../AdminActions/AdminActions";
 import { GuestActions } from "../GuestActions/GuestActions";
 import { SubscriberActions } from "../SubscriberActions/SubscriberActions";
 
+import styles from "./styles.module.css";
+
 type User = {
   id: number;
   name: string;
@@ -18,7 +20,7 @@ interface Props {
 // ISP - Interface Segregation Principle (correct)
 const UserPanelV02 = ({ user, role }: Props) => {
   return (
-    <div>
+    <div className={styles.panel}>
       <h2>{user.name}</h2>
       <p>{user.email}</p>
 

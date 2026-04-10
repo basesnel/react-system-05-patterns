@@ -1,4 +1,4 @@
-const AdminAction = () => {
+const AdminActions = () => {
   const handleEditClick = () => {
     console.log("Editing user");
   };
@@ -15,4 +15,4 @@ const AdminAction = () => {
   );
 };
 
-export { AdminAction };
+export { AdminActions };

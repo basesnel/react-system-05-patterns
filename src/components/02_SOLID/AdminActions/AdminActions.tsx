@@ -1,3 +1,4 @@
+// ISP - Interface Segregation Principle (correct)
 const AdminActions = () => {
   const handleEditClick = () => {
     console.log("Editing user");

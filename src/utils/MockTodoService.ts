@@ -26,7 +26,6 @@ export class MockTodoService implements TodoService {
       title: todo.title || "Untitled",
       completed: todo.completed ?? false,
     };
-    this.todos.push(newTodo);
     return newTodo;
   }
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { TodoService } from "../../../utils/ApiTodoService";
 
 type Todo = {
   id: number;
@@ -7,7 +8,7 @@ type Todo = {
 };
 
 type Props = {
-  todoService: () => void;
+  todoService: TodoService;
 };
 
 // DIP - Dependancy Inversion Principle (correct)
@@ -21,8 +22,8 @@ const TodoListV02 = ({ todoService }: Props) => {
 
   const handleAddTodo = async () => {
     if (!newTodo.trim()) return;
-    const todo = await todoService({ title: newTodo });
-    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    const todo = await todoService.addTodo({ title: newTodo });
+    setTodos((prevTodos) => [...prevTodos, todo]);
     setNewTodo("");
   };
 
@@ -40,6 +41,17 @@ const TodoListV02 = ({ todoService }: Props) => {
         onChange={(e) => setNewTodo(e.target.value)}
         placeholder="Add new todo"
       />
+      <button onClick={handleAddTodo}>AddTodo</button>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.title}
+            {":"}
+            {todo.completed ? "Completed" : "Uncompleted"}
+            <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

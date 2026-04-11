@@ -20,7 +20,7 @@ const TodoListV01 = () => {
   }, []);
 
   const createTodo = async (title: string): Promise<void> => {
-    const response = await fetch("https:/jsonplaceholder.typicode.com/todos", {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ title, completed: false }),

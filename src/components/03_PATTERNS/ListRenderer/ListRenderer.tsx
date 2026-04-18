@@ -5,6 +5,7 @@ type Props<T> = {
   render: (data: T | null) => JSX.Element;
 };
 
+// Render Props - pattern
 function ListRenderer<T>({ items, render }: Props<T>) {
   return (
     <ul>

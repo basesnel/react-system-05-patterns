@@ -19,7 +19,12 @@ const DataFetcher = <T,>({ url, render }: Props<T>): JSX.Element => {
 
   useEffect(() => {
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("There is an error of data fetching");
+        }
+        return response.json();
+      })
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));

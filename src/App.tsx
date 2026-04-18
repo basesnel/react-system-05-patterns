@@ -104,9 +104,8 @@ function App() {
           if (loading) return <p>Loading...</p>;
 
           if (error) {
-            if (error instanceof Error) {
-              return <p>{error.message}</p>;
-            } else return <p>{String(error)}</p>;
+            if (error instanceof Error) return <p>{error?.message}</p>;
+            return <p>{String(error)}</p>;
           }
 
           return (
@@ -120,15 +119,16 @@ function App() {
       />
 
       <DataFetcher<UserFetcher[]>
-        url="https:/jsonplaceholder.typicode.com/users"
+        url="https:/jsonplaceholder.typicode.com/use"
         render={({ data, loading, error }) => {
           if (loading) return <p>Loading...</p>;
 
           if (error) {
-            if (error instanceof Error) {
-              return <p>{error.message}</p>;
-            } else return <p>{String(error)}</p>;
+            if (error instanceof Error) return <p>{error?.message}</p>;
+            return <p>{String(error)}</p>;
           }
+
+          console.log(data);
 
           return (
             <ul>

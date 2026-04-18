@@ -9,7 +9,7 @@ type Props<T> = {
 function ListRenderer<T>({ items, render }: Props<T>) {
   return (
     <ul>
-      {items.map((item, index) => (
+      {items.map((item: T, index: number) => (
         <li key={index}>{render(item)}</li>
       ))}
     </ul>

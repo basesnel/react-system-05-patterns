@@ -68,17 +68,20 @@ function App() {
       <h1>Data table</h1>
 
       <h2>List</h2>
-      <ListRenderer items={items} render={(item) => <p key={item}>{item}</p>} />
+      <ListRenderer<string>
+        items={items}
+        render={(item) => <p key={item}>{item}</p>}
+      />
 
       <h2>Users</h2>
-      <Table
+      <Table<userType>
         data={userData}
         renderHeader={renderUserHeader}
         renderRow={renderUserRow}
       />
 
       <h2>Cars</h2>
-      <Table
+      <Table<carType>
         data={carData}
         renderHeader={renderCarHeader}
         renderRow={renderCarRow}

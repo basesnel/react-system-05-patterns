@@ -1,12 +1,18 @@
+import type { JSX } from "react";
 import { useEffect, useState } from "react";
 
-// type UseFetchResult<T> = {
-//   data: T | null;
-//   loading: boolean;
-//   error: string | null;
-// };
+type UseFetchResult<T> = {
+  data: T | null;
+  loading: boolean;
+  error: unknown;
+};
 
-const DataFetcher = ({ url, render }) => {
+type Props<T> = {
+  url: string;
+  render: (data: UseFetchResult<T>) => JSX.Element;
+};
+
+const DataFetcher = <T,>({ url, render }: Props<T>): JSX.Element => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);

@@ -15,6 +15,16 @@ type carType = {
   year: number;
 };
 
+type UserFetcher = {
+  id: number;
+  name: string;
+};
+
+type PostFetcher = {
+  id: number;
+  title: string;
+};
+
 function App() {
   const items = ["Apple", "Banana", "Cherry"];
 
@@ -88,15 +98,20 @@ function App() {
         renderRow={renderCarRow}
       />
 
-      <DataFetcher
+      <DataFetcher<PostFetcher[]>
         url="https:/jsonplaceholder.typicode.com/posts"
         render={({ data, loading, error }) => {
           if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error: {error.message}</p>;
+
+          if (error) {
+            if (error instanceof Error) {
+              return <p>{error.message}</p>;
+            } else return <p>{String(error)}</p>;
+          }
 
           return (
             <ul>
-              {data.slice(0, 5).map((post) => (
+              {data?.slice(0, 5).map((post) => (
                 <li key={post.id}>{post.title}</li>
               ))}
             </ul>
@@ -104,15 +119,20 @@ function App() {
         }}
       />
 
-      <DataFetcher
+      <DataFetcher<UserFetcher[]>
         url="https:/jsonplaceholder.typicode.com/users"
         render={({ data, loading, error }) => {
           if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error: {error.message}</p>;
+
+          if (error) {
+            if (error instanceof Error) {
+              return <p>{error.message}</p>;
+            } else return <p>{String(error)}</p>;
+          }
 
           return (
             <ul>
-              {data.slice(0, 5).map((user) => (
+              {data?.slice(0, 5).map((user) => (
                 <li key={user.id}>{user.name}</li>
               ))}
             </ul>

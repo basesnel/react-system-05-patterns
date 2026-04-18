@@ -6,6 +6,7 @@ type Props<T> = {
   renderRow: (data: T) => JSX.Element;
 };
 
+// Render Props - pattern
 const Table = <T,>({ data, renderHeader, renderRow }: Props<T>) => {
   return (
     <table>

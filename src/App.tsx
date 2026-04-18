@@ -1,3 +1,4 @@
+import { DataFetcher } from "./components/03_PATTERNS/DataFetcher/DataFetcher";
 import { ListRenderer } from "./components/03_PATTERNS/ListRenderer/ListRenderer";
 import { Table } from "./components/03_PATTERNS/Table/Table";
 
@@ -85,6 +86,38 @@ function App() {
         data={carData}
         renderHeader={renderCarHeader}
         renderRow={renderCarRow}
+      />
+
+      <DataFetcher
+        url="https:/jsonplaceholder.typicode.com/posts"
+        render={({ data, loading, error }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error: {error.message}</p>;
+
+          return (
+            <ul>
+              {data.slice(0, 5).map((post) => (
+                <li key={post.id}>{post.title}</li>
+              ))}
+            </ul>
+          );
+        }}
+      />
+
+      <DataFetcher
+        url="https:/jsonplaceholder.typicode.com/users"
+        render={({ data, loading, error }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error: {error.message}</p>;
+
+          return (
+            <ul>
+              {data.slice(0, 5).map((user) => (
+                <li key={user.id}>{user.name}</li>
+              ))}
+            </ul>
+          );
+        }}
       />
     </>
   );

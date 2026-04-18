@@ -6,7 +6,7 @@ type Props<T> = {
 };
 
 // Render Props - pattern
-function ListRenderer<T>({ items, render }: Props<T>) {
+const ListRenderer = <T,>({ items, render }: Props<T>) => {
   return (
     <ul>
       {items.map((item: T, index: number) => (
@@ -14,6 +14,6 @@ function ListRenderer<T>({ items, render }: Props<T>) {
       ))}
     </ul>
   );
-}
+};
 
 export { ListRenderer };

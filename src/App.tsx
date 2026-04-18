@@ -1,16 +1,29 @@
 import { ListRenderer } from "./components/03_PATTERNS/ListRenderer/ListRenderer";
 import { Table } from "./components/03_PATTERNS/Table/Table";
 
+type userType = {
+  id: number;
+  name: string;
+  age: number;
+};
+
+type carType = {
+  id: number;
+  brand: string;
+  model: string;
+  year: number;
+};
+
 function App() {
   const items = ["Apple", "Banana", "Cherry"];
 
-  const userData = [
+  const userData: userType[] = [
     { id: 1, name: "John", age: 30 },
     { id: 2, name: "Jane", age: 25 },
     { id: 3, name: "Alice", age: 28 },
   ];
 
-  const carData = [
+  const carData: carType[] = [
     { id: 1, brand: "BMW", model: "XS", year: 2020 },
     { id: 2, brand: "Tesla", model: "Model 3", year: 2021 },
     { id: 3, brand: "Audi", model: "Q7", year: 2019 },
@@ -24,7 +37,7 @@ function App() {
     </>
   );
 
-  const renderUserRow = (user) => (
+  const renderUserRow = (user: userType) => (
     <>
       <td data-label="ID">{user.id}</td>
       <td data-label="Name">{user.name}</td>
@@ -41,7 +54,7 @@ function App() {
     </>
   );
 
-  const renderCarRow = (car) => (
+  const renderCarRow = (car: carType) => (
     <>
       <td data-label="ID">{car.id}</td>
       <td data-label="Brand">{car.brand}</td>

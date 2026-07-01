@@ -1,3 +1,4 @@
+import { Card } from "./components/03_PATTERNS/Card/Card";
 import { DataFetcher } from "./components/03_PATTERNS/DataFetcher/DataFetcher";
 import { ListRenderer } from "./components/03_PATTERNS/ListRenderer/ListRenderer";
 import { Table } from "./components/03_PATTERNS/Table/Table";
@@ -137,6 +138,11 @@ function App() {
           );
         }}
       />
+
+      <Card header={<h3>User information</h3>} footer={<button>Detail</button>}>
+        <p>Name: John Doe</p>
+        <p>Email: john.doe@example</p>
+      </Card>
     </>
   );
 }

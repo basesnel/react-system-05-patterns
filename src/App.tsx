@@ -1,5 +1,6 @@
 import { Card } from "./components/03_PATTERNS/Card/Card";
 import { DataFetcher } from "./components/03_PATTERNS/DataFetcher/DataFetcher";
+import { InputWithSlot } from "./components/03_PATTERNS/InputWithSlot/InputWithSlot";
 import { ListRenderer } from "./components/03_PATTERNS/ListRenderer/ListRenderer";
 import { Table } from "./components/03_PATTERNS/Table/Table";
 
@@ -19,11 +20,13 @@ type carType = {
 type UserFetcher = {
   id: number;
   name: string;
+  email?: string;
 };
 
 type PostFetcher = {
   id: number;
   title: string;
+  body?: string;
 };
 
 function App() {
@@ -143,6 +146,70 @@ function App() {
         <p>Name: John Doe</p>
         <p>Email: john.doe@example</p>
       </Card>
+
+      <DataFetcher<UserFetcher[]>
+        url="https:/jsonplaceholder.typicode.com/users"
+        render={({ data, loading, error }) => {
+          if (loading) return <p>Loading...</p>;
+
+          if (error) {
+            if (error instanceof Error) return <p>{error?.message}</p>;
+            return <p>{String(error)}</p>;
+          }
+
+          return (
+            <ul>
+              {data?.slice(0, 5).map((user) => (
+                <li key={user.id}>
+                  <Card
+                    header={<h3>User information</h3>}
+                    footer={<button>Detail</button>}
+                  >
+                    <p>Name: {user.name}</p>
+                    <p>Email: {user.email}</p>
+                  </Card>
+                </li>
+              ))}
+            </ul>
+          );
+        }}
+      />
+
+      <DataFetcher<PostFetcher[]>
+        url="https:/jsonplaceholder.typicode.com/posts"
+        render={({ data, loading, error }) => {
+          if (loading) return <p>Loading...</p>;
+
+          if (error) {
+            if (error instanceof Error) return <p>{error?.message}</p>;
+            return <p>{String(error)}</p>;
+          }
+
+          return (
+            <ul>
+              {data?.slice(0, 5).map((post) => (
+                <li key={post.id}>
+                  <Card
+                    header={<h3>User information</h3>}
+                    footer={<button>Detail</button>}
+                  >
+                    <p>Title: {post.title}</p>
+                    <p>Description: {post.body}</p>
+                  </Card>
+                </li>
+              ))}
+            </ul>
+          );
+        }}
+      />
+
+      <div>
+        <InputWithSlot
+          label="Search"
+          placeholder="Type a request"
+          iconLeft={<span>🔍</span>}
+        />
+      </div>
     </>
   );
 }

@@ -1,7 +1,10 @@
+import { useState } from "react";
+import { Accordion } from "./components/03_PATTERNS/Accordion/Accordion";
 import { Card } from "./components/03_PATTERNS/Card/Card";
 import { DataFetcher } from "./components/03_PATTERNS/DataFetcher/DataFetcher";
 import { InputWithSlot } from "./components/03_PATTERNS/InputWithSlot/InputWithSlot";
 import { ListRenderer } from "./components/03_PATTERNS/ListRenderer/ListRenderer";
+import { Modal } from "./components/03_PATTERNS/Modal/Modal";
 import { Table } from "./components/03_PATTERNS/Table/Table";
 
 type userType = {
@@ -77,6 +80,14 @@ function App() {
       <td data-label="Year">{car.year}</td>
     </>
   );
+
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setActiveIndex((prevIndex: number | null) =>
+      prevIndex === index ? null : index,
+    );
+  };
 
   return (
     <>
@@ -209,6 +220,42 @@ function App() {
           placeholder="Type a request"
           iconLeft={<span>🔍</span>}
         />
+      </div>
+
+      <div>
+        <Modal
+          headerSlot={<h3>Modal's header</h3>}
+          footerSlot={<button>Close</button>}
+        >
+          <p>Modal's content</p>
+        </Modal>
+      </div>
+
+      <div>
+        <h2>Accordion example</h2>
+        <Accordion>
+          <Accordion.Item
+            title="Section 1"
+            isActive={activeIndex === 0}
+            onToggle={() => handleToggle(0)}
+          >
+            Content for Section 1.
+          </Accordion.Item>
+          <Accordion.Item
+            title="Section 2"
+            isActive={activeIndex === 1}
+            onToggle={() => handleToggle(1)}
+          >
+            Content for Section 1.
+          </Accordion.Item>
+          <Accordion.Item
+            title="Section 3"
+            isActive={activeIndex === 2}
+            onToggle={() => handleToggle(2)}
+          >
+            Content for Section 1.
+          </Accordion.Item>
+        </Accordion>
       </div>
     </>
   );

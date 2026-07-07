@@ -1,17 +1,13 @@
 import type { JSX } from "react";
 
-type Props = {
+interface Props extends React.ComponentProps<"input"> {
   label?: string;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
-};
+}
 
-const InputWithSlot = ({
-  label,
-  iconLeft,
-  iconRight,
-  ...props
-}: Props & React.ComponentProps<"input">) => (
+// Slots
+const InputWithSlot = ({ label, iconLeft, iconRight, ...props }: Props) => (
   <div>
     {label && <label>{label}</label>}
     <div>

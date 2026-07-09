@@ -28,7 +28,7 @@ const Accordion = ({ children, defaultValue = null }: AccordionProps) => {
   const [openItem, setOpenItem] = useState<string | null>(defaultValue);
 
   const accordionId = useRef(
-    `accordion-${Math.random().toString(36).substring(2, 9)}`,
+    `accordion-${Math.random().toString(36).substr(2, 9)}`,
   );
 
   const toggleItem = (value: string) => {
@@ -88,7 +88,7 @@ const AccordionTrigger = ({ children }: SubComponentProps) => {
     if (!root) return;
 
     const triggers = Array.from(
-      root.querySelectorAll(".accordion-trigger-btn"),
+      root.querySelectorAll(`.accordion-trigger-btn`),
     ) as HTMLButtonElement[];
 
     const currentIndex = triggers.indexOf(event.currentTarget);
@@ -126,7 +126,7 @@ const AccordionTrigger = ({ children }: SubComponentProps) => {
   };
 
   return (
-    <h3 className="accordion-header">
+    <h3>
       <button
         type="button"
         id={`accordion-trigger-${value}`}
@@ -135,16 +135,9 @@ const AccordionTrigger = ({ children }: SubComponentProps) => {
         onClick={() => toggleItem(value)}
         onKeyDown={handleKeyDown}
         className="accordion-trigger-btn"
-        data-state={isOpen ? "open" : "closed"}
       >
         {children}{" "}
-        <span
-          className="accordion-icon"
-          aria-hidden="true"
-          data-state={isOpen ? "open" : "closed"}
-        >
-          🔽
-        </span>
+        <span aria-hidden="true">{openItem === value ? "🔼" : "🔽"}</span>
       </button>
     </h3>
   );
@@ -161,9 +154,8 @@ const AccordionContent = ({ children }: SubComponentProps) => {
       id={`accordion-trigger-${value}`}
       role="region"
       aria-labelledby={`accordion-trigger-${value}`}
+      hidden={!isOpen}
       className="accordion-panel-content"
-      data-state={isOpen ? "open" : "closed"}
-      aria-hidden={!isOpen}
     >
       <div className="accordion-panel-inner">{children}</div>
     </div>

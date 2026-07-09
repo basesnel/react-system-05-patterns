@@ -1,10 +1,9 @@
 import type { ReactNode } from "react";
-import React, { createContext, useContext, useState, useRef } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface AccordionContextType {
   openItem: string | null;
   toggleItem: (value: string) => void;
-  accordionId: string;
 }
 
 const AccordionContext = createContext<AccordionContextType | null>(null);
@@ -27,21 +26,13 @@ interface AccordionProps {
 const Accordion = ({ children, defaultValue = null }: AccordionProps) => {
   const [openItem, setOpenItem] = useState<string | null>(defaultValue);
 
-  const accordionId = useRef(
-    `accordion-${Math.random().toString(36).substring(2, 9)}`,
-  );
-
   const toggleItem = (value: string) => {
     setOpenItem((prev) => (prev === value ? null : value));
   };
 
   return (
-    <AccordionContext.Provider
-      value={{ openItem, toggleItem, accordionId: accordionId.current }}
-    >
-      <div id={accordionId.current} className="accordion-root">
-        {children}
-      </div>
+    <AccordionContext.Provider value={{ openItem, toggleItem }}>
+      <div>{children}</div>
     </AccordionContext.Provider>
   );
 };
@@ -70,81 +61,28 @@ interface SubComponentProps {
 const AccordionItem = ({ value, children }: AccordionItemProps) => {
   return (
     <ItemContext.Provider value={value}>
-      <div className="accordion-item" data-value={value}>
-        {children}
-      </div>
+      <div data-value={value}>{children}</div>
     </ItemContext.Provider>
   );
 };
 
 const AccordionTrigger = ({ children }: SubComponentProps) => {
-  const { openItem, toggleItem, accordionId } = useAccordion();
+  const { openItem, toggleItem } = useAccordion();
   const value = useItemContext();
 
   const isOpen = openItem === value;
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    const root = document.getElementById(accordionId);
-    if (!root) return;
-
-    const triggers = Array.from(
-      root.querySelectorAll(".accordion-trigger-btn"),
-    ) as HTMLButtonElement[];
-
-    const currentIndex = triggers.indexOf(event.currentTarget);
-
-    let nextIndex: number | null = null;
-
-    switch (event.key) {
-      case "ArrowDown":
-        event.preventDefault();
-        nextIndex = (currentIndex + 1) % triggers.length;
-        break;
-
-      case "ArrowUp":
-        event.preventDefault();
-        nextIndex = (currentIndex - 1 + triggers.length) % triggers.length;
-        break;
-
-      case "Home":
-        event.preventDefault();
-        nextIndex = 0;
-        break;
-
-      case "End":
-        event.preventDefault();
-        nextIndex = triggers.length - 1;
-        break;
-
-      default:
-        return;
-    }
-
-    if (nextIndex !== null && triggers[nextIndex]) {
-      triggers[nextIndex].focus();
-    }
-  };
-
   return (
-    <h3 className="accordion-header">
+    <h3>
       <button
         type="button"
         id={`accordion-trigger-${value}`}
         aria-expanded={isOpen}
         aria-controls={`accordion-panel-${value}`}
         onClick={() => toggleItem(value)}
-        onKeyDown={handleKeyDown}
-        className="accordion-trigger-btn"
-        data-state={isOpen ? "open" : "closed"}
       >
         {children}{" "}
-        <span
-          className="accordion-icon"
-          aria-hidden="true"
-          data-state={isOpen ? "open" : "closed"}
-        >
-          🔽
-        </span>
+        <span aria-hidden="true">{openItem === value ? "-" : "+"}</span>
       </button>
     </h3>
   );
@@ -161,11 +99,9 @@ const AccordionContent = ({ children }: SubComponentProps) => {
       id={`accordion-trigger-${value}`}
       role="region"
       aria-labelledby={`accordion-trigger-${value}`}
-      className="accordion-panel-content"
-      data-state={isOpen ? "open" : "closed"}
-      aria-hidden={!isOpen}
+      hidden={!isOpen}
     >
-      <div className="accordion-panel-inner">{children}</div>
+      <div>{children}</div>
     </div>
   );
 };

@@ -1,11 +1,18 @@
 // import { useState } from "react";
 import { Accordion } from "./components/03_PATTERNS/Accordion/Accordion";
+import { PostList } from "./components/03_PATTERNS/PostList/PostList";
 // import { Card } from "./components/03_PATTERNS/Card/Card";
 // import { DataFetcher } from "./components/03_PATTERNS/DataFetcher/DataFetcher";
 // import { InputWithSlot } from "./components/03_PATTERNS/InputWithSlot/InputWithSlot";
 // import { ListRenderer } from "./components/03_PATTERNS/ListRenderer/ListRenderer";
 // import { Modal } from "./components/03_PATTERNS/Modal/Modal";
 // import { Table } from "./components/03_PATTERNS/Table/Table";
+
+type postType = {
+  id: number;
+  title: string;
+  body: string;
+};
 
 // type userType = {
 //   id: number;
@@ -34,6 +41,16 @@ import { Accordion } from "./components/03_PATTERNS/Accordion/Accordion";
 
 function App() {
   // const items = ["Apple", "Banana", "Cherry"];
+
+  const posts: postType[] = [
+    { id: 1, title: "Post 1", body: "This is the first post." },
+    { id: 2, title: "Post 2", body: "This is the second post." },
+    { id: 3, title: "Post 3", body: "This is the third post." },
+    { id: 4, title: "Post 4", body: "This is the fourth post." },
+    { id: 5, title: "Post 5", body: "This is the fifth post." },
+    { id: 6, title: "Post 6", body: "This is the sixth post." },
+    { id: 7, title: "Post 7", body: "This is the seventh post." },
+  ];
 
   // const userData: userType[] = [
   //   { id: 1, name: "John", age: 30 },
@@ -302,6 +319,13 @@ function App() {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion>
+      </div>
+      <div>
+        <PostList>
+          {posts.slice(0, 5).map((post) => (
+            <PostList.Item key={post.id} post={post} />
+          ))}
+        </PostList>
       </div>
     </>
   );

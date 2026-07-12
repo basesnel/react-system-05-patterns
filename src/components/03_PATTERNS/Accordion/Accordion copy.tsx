@@ -43,7 +43,5 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 AccordionItem.displayName = "AccordionItem";
 
 Accordion.Item = AccordionItem as AccordionItemComponent;
-// const AccordionExport = Accordion as AccordionComponent;
 
-// export { AccordionExport as Accordion };
 export { Accordion };
